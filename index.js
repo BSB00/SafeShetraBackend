@@ -21,15 +21,19 @@ con.on('open',()=>{
     console.log("connected.....")
 })
 
-app.get(('/testing', (req, res)=>{
-    res.send("testing")
-}))
+app.get('/testing', (req, res) => {
+    res.status(200).json({
+        success: true,
+        message: 'Server is running'
+    });
+});
+
 
 app.use('/user',UserRoute)
 app.use('/notification',NotificationRoute)
 app.use('/hazard',HazardRoute)
 
 
-app.listen(8000,()=>{
+app.listen(5000,()=>{
     console.log("Server Started....")
 })
